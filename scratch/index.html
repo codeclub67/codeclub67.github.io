@@ -1,0 +1,28 @@
+<html>
+  <body>
+    <script>
+      const owner = "codeclub67";
+      const repo = "codeclub67.github.io";
+      (async () => {
+        const response = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/`);
+        const data = await response.json();
+        var sha = None;
+        for (let file of data) {
+          if (file.name=="scratch") {
+            sha = file.sha;
+            break;
+          }
+        }
+        url = `https://api.github.com/repos/${owner}/${repo}/git/trees/${sha}`;
+        const response1 = await fetch(url);
+        const data1 = await response1.json();
+        let htmlString = '<ul>';
+        for (let file of data.tree) {
+          htmlString += `<li><a href="${file.path}">${file.url}</a></li>`;
+        }
+        htmlString += '</ul>';
+        document.getElementsByTagName('body')[0].innerHTML = htmlString;
+      })()
+    </script>
+  <body>
+</html>
