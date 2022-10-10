@@ -18,7 +18,7 @@
         const data1 = await response1.json();
         let htmlString = '<ul>';
         for (let file of data1.tree) {
-          htmlString += `<li><a href="${file.path}">${file.url}</a></li>`;
+          htmlString += `<li><a href="${file.path}">${file.path}</a></li>`;
         }
         htmlString += '</ul>';
         document.getElementsByTagName('body')[0].innerHTML = htmlString;
