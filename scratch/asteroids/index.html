@@ -22,27 +22,23 @@
       var path = window.location.pathname.split('/');
       var ht = "";
       var dir = {};
-      for (let i=0; i<path.length; i++) {
-        if (path[i]=="index.html") break;
-        if (i==0) {
-          ht = "";
-          for (let file of contents) {
-            ht += `<li><a href="${file.path}">${file.name}</a></li>`;
-            dir[file.name] = file.sha;
-          }
-        } else {
-          document.write(path[i]);
-          sha = dir[path[i]];
-          ht = "";
-          var trees = await getTrees(OWNER, REPO, sha);
-          dir = {};
-          for (let file of trees.tree) {
-            ht += `<li><a href="${file.path}">${file.path}</a></li>`;
-            dir[file.path] = file.sha;
-          }
+      for (let file of contents) {
+        ht += `<li><a href="${file.path}">${file.name}</a></li>`;
+        dir[file.name] = file.sha;
+      }
+      for (let i=1; i < path.length; i++) {
+        if (path[i] == "index.html") break;
+        document.write(path[i]);
+        sha = dir[path[i]];
+        ht = "";
+        var trees = await getTrees(OWNER, REPO, sha);
+        dir = {};
+        for (let file of trees.tree) {
+          ht += `<li><a href="${file.path}">${file.path}</a></li>`;
+          dir[file.path] = file.sha;
         }
       }
-      document.getElementsByTagName('body')[0].innerHTML =  '<ul>' + ht + '</ul>';
+      document.getElementsByTagName('body')[0].innerHTML = '<ul>' + ht + '</ul>';
     })();
   </script>
 
