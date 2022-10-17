@@ -1,0 +1,45 @@
+<html>
+
+<body>
+  <script>
+    const OWNER = "codeclub67";
+    const REPO = "codeclub67.github.io";
+
+    async function getContents(owner, repo) {
+      var url = `https://api.github.com/repos/${owner}/${repo}/contents/`;
+      var response = await fetch(url);
+      return response.json();
+    }
+
+    async function getTrees(owner, repo, sha) {
+      var url = `https://api.github.com/repos/${owner}/${repo}/git/trees/${sha}`;
+      var response = await fetch(url);
+      return response.json();
+    }
+
+    (async () => {
+      var contents = await getContents(OWNER, REPO);
+      var path = window.location.pathname.split('/');
+      var dir = {};
+      var ht = "";
+      for (let file of contents) {
+        ht += `<li><a href="${file.path}">${file.name}</a></li>`;
+        dir[file.name] = file.sha;
+      }
+      for (let i=1; i < path.length; i++) {
+        if (path[i] == "index.html" || path[i]=="") break;
+        var trees = await getTrees(OWNER, REPO, dir[path[i]]);
+        dir = {};
+        ht = "";
+        for (let file of trees.tree) {
+          ht += `<li><a href="${file.path}">${file.path}</a></li>`;
+          dir[file.path] = file.sha;
+        }
+      }
+      document.getElementsByTagName('body')[0].innerHTML = '<ul>' + ht + '</ul>';
+    })();
+  </script>
+
+  <body>
+
+</html>
