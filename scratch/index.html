@@ -25,7 +25,6 @@
           if (file.name==dir) {
             var trees =  await getTrees(OWNER,REPO,file.sha);
             var ht = '<ul>';
-            ht += dir+"<br>";
             for (let file of trees.tree) {
               ht += `<li><a href="${file.path}">${file.path}</a></li>`;
             }
