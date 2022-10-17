@@ -32,6 +32,7 @@
             dir[file.name] = file.sha;
           }
         } else {
+          document.write(p);
           sha = dir[p];
           ht = "";
           var trees = await getTrees(OWNER, REPO, sha);
