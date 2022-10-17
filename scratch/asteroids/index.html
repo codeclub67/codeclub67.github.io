@@ -20,19 +20,17 @@
     (async () => {
       var contents = await getContents(OWNER, REPO);
       var path = window.location.pathname.split('/');
-      var ht = "";
       var dir = {};
+      var ht = "";
       for (let file of contents) {
         ht += `<li><a href="${file.path}">${file.name}</a></li>`;
         dir[file.name] = file.sha;
       }
       for (let i=1; i < path.length; i++) {
         if (path[i] == "index.html" || path[i]=="") break;
-        document.write(path[i]);
-        sha = dir[path[i]];
-        ht = "";
-        var trees = await getTrees(OWNER, REPO, sha);
+        var trees = await getTrees(OWNER, REPO, dir[path[i]]);
         dir = {};
+        ht = "";
         for (let file of trees.tree) {
           ht += `<li><a href="${file.path}">${file.path}</a></li>`;
           dir[file.path] = file.sha;
