@@ -21,12 +21,11 @@
       var contents = await getContents(OWNER, REPO);
       var path = window.location.pathname.split('/');
       var ht = "";
-      var dir = null;
+      var dir = {};
       for (let i=0; i<path.length; i++) {
         if (path[i]=="index.html") break;
-        if (dir==null) {
+        if (i==0) {
           ht = "";
-          dir = {};
           for (let file of contents) {
             ht += `<li><a href="${file.path}">${file.name}</a></li>`;
             dir[file.name] = file.sha;
@@ -39,7 +38,7 @@
           dir = {};
           for (let file of trees.tree) {
             ht += `<li><a href="${file.path}">${file.path}</a></li>`;
-            dir[file.name] = file.sha;
+            dir[file.path] = file.sha;
           }
         }
       }
