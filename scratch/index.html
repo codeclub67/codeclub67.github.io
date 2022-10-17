@@ -18,8 +18,9 @@
       }
 
       (async () => {
-        var path=window.location.pathname
-        var dir = path.split('/').slice(-2,-2)[0]
+        var path=window.location.pathname.split('/');
+        var dir = path[path.length-1];
+        if (dir.endsWith(".html")) dir = path[path.length-2];
         var contents = await getContents(OWNER,REPO);
         for (let file of contents) {
           if (file.name==DIR) {
