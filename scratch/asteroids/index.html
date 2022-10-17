@@ -22,9 +22,9 @@
       var path = window.location.pathname.split('/');
       var ht = "";
       var dir = null;
-      for (let p in path) {
-        if (p=="index.html") break;
-        if (p == "" && dir==null) {
+      for (let i=0; i<path.length; i++) {
+        if (path[i]=="index.html") break;
+        if (dir==null) {
           ht = "";
           dir = {};
           for (let file of contents) {
@@ -32,8 +32,8 @@
             dir[file.name] = file.sha;
           }
         } else {
-          document.write(p);
-          sha = dir[p];
+          document.write(path[i]);
+          sha = dir[path[i]];
           ht = "";
           var trees = await getTrees(OWNER, REPO, sha);
           dir = {};
