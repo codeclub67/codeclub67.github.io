@@ -3,9 +3,9 @@
     <script>
       async function getContents(owner, repo) {
         const response = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/`);
-        return await response.json();
+        return response.json();
       }
-      let data = getContents('codeclub67','codeclub67.github.io');
+      let data = await getContents('codeclub67','codeclub67.github.io');
       let htmlString = '<ul>';
       for (let file of data) {
           htmlString += `<li><a href="${file.path}">${file.name}</a></li>`;
