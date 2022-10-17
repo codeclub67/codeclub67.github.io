@@ -3,7 +3,6 @@
     <script>
       const OWNER = "codeclub67";
       const REPO = "codeclub67.github.io";
-      const DIR = "scratch"
 
       async function getContents(owner, repo) {
         var url = `https://api.github.com/repos/${owner}/${repo}/contents/`;
@@ -23,7 +22,7 @@
         if (dir.endsWith(".html")) dir = path[path.length-2];
         var contents = await getContents(OWNER,REPO);
         for (let file of contents) {
-          if (file.name==DIR) {
+          if (file.name==dir) {
             var trees =  await getTrees(OWNER,REPO,file.sha);
             var ht = '<ul>';
             ht += dir+"<br>";
