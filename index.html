@@ -6,12 +6,12 @@
         return response.json();
       }
       let data = await getContents('codeclub67','codeclub67.github.io');
-      let htmlString = '<ul>';
+      let ht = '<ul>';
       for (let file of data) {
-          htmlString += `<li><a href="${file.path}">${file.name}</a></li>`;
+          ht += `<li><a href="${file.path}">${file.name}</a></li>`;
       }
-      htmlString += '</ul>';
-      document.getElementsByTagName('body')[0].innerHTML = htmlString;
+      ht += '</ul>';
+      document.getElementsByTagName('body')[0].innerHTML = ht;
     </script>
   <body>
 </html>
