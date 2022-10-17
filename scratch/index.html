@@ -18,8 +18,10 @@
 
       (async () => {
         var path=window.location.pathname.split('/');
+        document.write(path);
         var dir = path[path.length-1];
         if (dir.endsWith(".html")) dir = path[path.length-2];
+        document.write(dir);
         var contents = await getContents(OWNER,REPO);
         for (let file of contents) {
           if (file.name==dir) {
