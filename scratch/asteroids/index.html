@@ -27,7 +27,7 @@
         dir[file.name] = file.sha;
       }
       for (let i=1; i < path.length; i++) {
-        if (path[i] == "index.html") break;
+        if (path[i] == "index.html" || path[i]=="") break;
         document.write(path[i]);
         sha = dir[path[i]];
         ht = "";
