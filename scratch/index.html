@@ -19,12 +19,13 @@
 
       (async () => {
         var path=window.location.pathname
+        var dir = path.split('/').slice(-2,-2)[0]
         var contents = await getContents(OWNER,REPO);
         for (let file of contents) {
           if (file.name==DIR) {
             var trees =  await getTrees(OWNER,REPO,file.sha);
             var ht = '<ul>';
-            ht += path+"<br>";
+            ht += dir+"<br>";
             for (let file of trees.tree) {
               ht += `<li><a href="${file.path}">${file.path}</a></li>`;
             }
