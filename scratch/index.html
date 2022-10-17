@@ -1,27 +1,37 @@
 <html>
   <body>
     <script>
-      const owner = "codeclub67";
-      const repo = "codeclub67.github.io";
+      const OWNER = "codeclub67";
+      const REPO = "codeclub67.github.io";
+      const DIR = "scratch"
+
+      async function getContents(owner, repo) {
+        var url = `https://api.github.com/repos/${owner}/${repo}/contents/`;
+        var response = await fetch(url);
+        return response.json();
+      }
+
+      async function getTrees(owner, repo, sha) {
+        var url = `https://api.github.com/repos/${owner}/${repo}/git/trees/${sha}`;
+        var response = await fetch(url);
+        return response.json();
+      }
+
       (async () => {
-        const response = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/`);
-        const data = await response.json();
-        var sha = null;
-        for (let file of data) {
-          if (file.name=="scratch") {
-            sha = file.sha;
+        var contents = await getContents(OWNER,REPO);
+        for (let file of contents) {
+          if (file.name==DIR) {
+            var trees =  await getTrees(OWNER,REPO,file.sha);
+            var ht = '<ul>';
+            for (let file of trees.tree) {
+              ht += `<li><a href="${file.path}">${file.path}</a></li>`;
+            }
+            ht += '</ul>';
+            document.getElementsByTagName('body')[0].innerHTML = ht;
             break;
           }
         }
-        url = `https://api.github.com/repos/${owner}/${repo}/git/trees/${sha}`;
-        const response1 = await fetch(url);
-        const data1 = await response1.json();
-        let htmlString = '<ul>';
-        for (let file of data1.tree) {
-          htmlString += `<li><a href="${file.path}">${file.path}</a></li>`;
-        }
-        htmlString += '</ul>';
-        document.getElementsByTagName('body')[0].innerHTML = htmlString;
+
       })()
     </script>
   <body>
