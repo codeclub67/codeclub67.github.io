@@ -27,6 +27,7 @@
             var trees =  await getTrees(OWNER,REPO,file.sha);
             var ht = '<ul>';
             for (let file of trees.tree) {
+              if (file.path == 'index.html') continue;
               ht += `<li><a href="${file.path}">${file.path}</a></li>`;
             }
             ht += '</ul>';
