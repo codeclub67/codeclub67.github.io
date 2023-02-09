@@ -14,6 +14,9 @@
         var data = await getContents(OWNER,REPO);
         var ht = '<ul>';
         for (let file of data) {
+            if (file.name == '.gitignore') continue;
+            if (file.name == 'LICENSE') continue;
+            if (file.name == 'index.html') continue;
             ht += `<li><a href="${file.path}">${file.name}</a></li>`;
         }
         ht += '</ul>';
