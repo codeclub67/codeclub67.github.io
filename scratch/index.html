@@ -1,4 +1,9 @@
 <html>
+  <head>
+    <style>
+      .text { vertical-align: top; font-family: Sans-Serif; }
+    </style>
+  </head>
   <body>
     <script>
       const OWNER = "codeclub67";
@@ -25,8 +30,8 @@
       }
 
       function output() {
-        ht += `<tr><td><a href="${doc}">${doc}</a></td>`;
-        if (img) ht += `<td><img href="${img}"></td>`;
+        ht += `<tr><td class='text'><a href="${doc}">${doc}</a></td>`;
+        if (img) ht += `<td><a href="${doc}"><img src="${img}"></a></td>`;
         ht += '</tr>';
       }
 
@@ -35,20 +40,22 @@
         var name = s[0];
         var ext = s[1];
         if (name==current) { // more files about the same thing
-          if (doc==null || ext=='pdf') doc = item;
           if (ext=='png') img = item;
+          else if (doc==null || ext=='pdf' || ext==null) doc = item;
         }
         else { // next file - emit the previous one
-          if (doc!=null) output();
-          doc = item;
+          if (doc) output();
+          doc = null;
           img = null;
+          if (ext=='png') img = item;
+          else if (ext=='docx' || ext=='pdf' || ext==null) doc = item;
           current = name;
         }
       }
 
       function endList() {
         // output the current file
-        output();
+        if (doc) output();
         ht += '</table>';
       }
 
