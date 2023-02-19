@@ -3,6 +3,7 @@
     <style>
       .text { vertical-align: top; font-family: Sans-Serif }
       img { width: 100px }
+      .top { vertical-align: top }
     </style>
   </head>
   <body>
@@ -33,7 +34,7 @@
 
       function output() {
         ht += `<tr><td class='text'><a href="${doc}">${doc}</a></td>`;
-        if (img) ht += `<td><a href="${doc}"><img src="${img}"></a></td>`;
+        if (img) ht += `<td class='top'><a href="${doc}"><img src="${img}"></a></td>`;
         if (txt) ht += `<td class='text'><object data="${txt}"></object></td>`;
         ht += '</tr>';
       }
