@@ -3,6 +3,10 @@
     <script>
       const OWNER = "codeclub67";
       const REPO = "codeclub67.github.io";
+      var ht = null;
+      var current = null;
+      var doc = null;
+      var img = null;
 
       async function getContents(owner, repo) {
         var url = `https://api.github.com/repos/${owner}/${repo}/contents/`;
@@ -16,6 +20,38 @@
         return response.json();
       }
 
+      function beginList() {
+        ht = '<table>';
+      }
+
+      function output() {
+        ht += `<tr><td><a href="${doc}">${doc}</a></td>`;
+        if (img) ht += `<td><img href="${img}"></td>`;
+        ht += '</tr>';
+      }
+
+      function AddToList(item) {
+        var s = item.split('.');
+        var name = s[0];
+        var ext = s[1];
+        if (name==current) { // more files about the same thing
+          if (doc==null || ext=='pdf') doc = item;
+          if (ext=='png') img = item;
+        }
+        else { // next file - emit the previous one
+          if (doc!=null) output();
+          doc = item;
+          img = null;
+          current = name;
+        }
+      }
+
+      function endList() {
+        // output the current file
+        output();
+        ht += '</table>';
+      }
+
       (async () => {
         var path=window.location.pathname.split('/');
         var n = path.length-1;
@@ -25,12 +61,12 @@
         for (let file of contents) {
           if (file.name==dir) {
             var trees =  await getTrees(OWNER,REPO,file.sha);
-            var ht = '<ul>';
+            beginList();
             for (let file of trees.tree) {
               if (file.path == 'index.html') continue;
-              ht += `<li><a href="${file.path}">${file.path}</a></li>`;
+              AddToList(file.path);
             }
-            ht += '</ul>';
+            endList() ;
             document.getElementsByTagName('body')[0].innerHTML = ht;
             break;
           }
