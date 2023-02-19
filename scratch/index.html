@@ -44,7 +44,7 @@
         var ext = s[1];
         if (name==current) { // more files about the same thing
           if (ext=='png') img = item;
-          else if (ext=='txt') txt = item;
+          else if (ext=='txt' || ext=='rtf') txt = item;
           else if (doc==null || ext=='pdf' || ext==null) doc = item;
         }
         else { // next file - emit the previous one
@@ -53,7 +53,7 @@
           img = null;
           txt = null;
           if (ext=='png') img = item;
-          else if (ext=='txt') txt = item;
+          else if (ext=='txt' || ext=='rtf') txt = item;
           else if (ext=='docx' || ext=='pdf' || ext==null) doc = item;
           current = name;
         }
