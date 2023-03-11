@@ -1,0 +1,1 @@
+Walk the Walk: Make a character walk across the screen and back again. Animation uses different costumes with the character in a slightly different position each time.
