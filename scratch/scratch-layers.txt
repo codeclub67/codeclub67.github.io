@@ -1,0 +1,1 @@
+Layers: Use layers to make sprites appear at different distances. One sprite can go behind another.
