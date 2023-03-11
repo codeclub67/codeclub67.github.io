@@ -1,0 +1,1 @@
+Mouse chase: Change the sprite angle to make it point and move in any direction.
