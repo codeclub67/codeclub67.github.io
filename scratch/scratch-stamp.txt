@@ -1,0 +1,1 @@
+I am an Ammonite: The Pen extension lets a sprite stamp copies of itself.
