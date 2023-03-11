@@ -1,1 +1,1 @@
-Dot – Space Hunter: Make a scrolling background with a very wide sprite.
+Dot - Space Hunter: Make a scrolling background with a very wide sprite.
