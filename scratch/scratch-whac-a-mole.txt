@@ -1,0 +1,1 @@
+Whac-a-Mole: The classic Whac-A-Mole game where moles pop up at random. Points are scored by whacking each mole as it appears.
