@@ -1,1 +1,1 @@
-Scratch Scroller: Make a scrolling street background using two sprites side by side.
+Scratch & Scroll: Make a scrolling street background using two sprites side by side.
