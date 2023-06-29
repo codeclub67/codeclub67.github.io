@@ -1,0 +1,2 @@
+Whac-a-Mole with an electric hammer.
+Create your Scratch Whac-a-mole game first.
