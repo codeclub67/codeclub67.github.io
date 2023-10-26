@@ -1,1 +1,1 @@
-Detect your pose in the computer’s camera and control a robot puppet.
+Detect your pose in the computer camera and control a robot puppet.

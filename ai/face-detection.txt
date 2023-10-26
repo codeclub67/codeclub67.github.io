@@ -1,1 +1,1 @@
-Detect your face in the computer’s camera.
+Detect your face in the computer camera.
