@@ -1,0 +1,4 @@
+Translate your words into any language.
+* Speech to Text
+* Text to Speech
+* Translate
