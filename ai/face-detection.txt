@@ -1,1 +1,2 @@
 Detect your face in the computer camera.
+* Face Detection extension
