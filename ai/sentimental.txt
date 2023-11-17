@@ -1,0 +1,5 @@
+The sentiment of your words can be positive (kind), neutral, or negative (unkind). Cheer up the sentimental jellyfish with kind words.
+* speech to text
+* sentiment analysis
+
+
