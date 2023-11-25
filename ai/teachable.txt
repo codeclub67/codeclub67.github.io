@@ -1,0 +1,3 @@
+Teach a machine to play Scissors, Paper, Stone
+
+* Teachable Machines
