@@ -1,0 +1,4 @@
+Christmas Card Creator
+AI generates images based on your description.
+
+* Uses generative AI (stable diffusion)
