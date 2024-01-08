@@ -1,1 +1,1 @@
-Jumping Bean: Make a sprite jump
+Jumping Beans: Make a sprite jump
