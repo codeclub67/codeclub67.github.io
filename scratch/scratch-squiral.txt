@@ -1,0 +1,3 @@
+Squirrel: A squiral is a square spiral, 
+not to be confused with a squirrel.
+* Uses the pen extension to stamp shapes.
