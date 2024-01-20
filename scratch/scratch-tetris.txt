@@ -1,0 +1,3 @@
+Scratch Tetris: Assemble the blocks as they drop.
+
+* Uses the Pen extension to stamp blocks where they fall.
