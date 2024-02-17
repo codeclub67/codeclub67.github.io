@@ -1,0 +1,3 @@
+Scratchling: Grow a digital plant - a scratch sapling, or scratchling.
+* Cloning
+See Lindenmeyer Systems (L-Systems).
