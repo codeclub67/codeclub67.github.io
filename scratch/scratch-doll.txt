@@ -1,0 +1,3 @@
+DigiDoll: Make a digital dressing-up doll.
+* Broadcast and receive
+* Buttons and labels
