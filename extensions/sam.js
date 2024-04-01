@@ -1,4 +1,4 @@
-import { SamJs } from "sam/dist/samjs.min.js";
+//import { SamJs } from "sam/dist/samjs.min.js";
 
 class ScratchSAM {
     
@@ -33,8 +33,8 @@ class ScratchSAM {
             mouth: 128,
             throat: 128
         };
-        var s = new SamJs(opts);
-        s.speak(text);
+        //var s = new SamJs(opts);
+        //s.speak(text);
     }
 
     getInfo() {
