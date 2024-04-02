@@ -1,10 +1,10 @@
-import StartAudioContext from 'startaudiocontext';
+//import StartAudioContext from 'startaudiocontext';
 //import bowser from 'bowser';
 
 //let AUDIO_CONTEXT;
 //if (!bowser.msie) {
-AUDIO_CONTEXT = new (window.AudioContext)();
-StartAudioContext(AUDIO_CONTEXT);
+//AUDIO_CONTEXT = new (window.AudioContext)();
+//StartAudioContext(AUDIO_CONTEXT);
 //}
 
 /**
