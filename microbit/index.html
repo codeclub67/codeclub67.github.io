@@ -1,8 +1,19 @@
 <html>
+  <head>
+    <style>
+      .text { vertical-align: top; font-family: Sans-Serif }
+      .top { vertical-align: top }
+    </style>
+  </head>
   <body>
     <script>
       const OWNER = "codeclub67";
       const REPO = "codeclub67.github.io";
+      var ht = null;
+      var current = null;
+      var doc = null;
+      var img = null;
+      var txt = null;
 
       async function getContents(owner, repo) {
         var url = `https://api.github.com/repos/${owner}/${repo}/contents/`;
@@ -16,6 +27,44 @@
         return response.json();
       }
 
+      function beginList() {
+        ht = '<table>';
+      }
+
+      function output() {
+        ht += `<tr><td class='text'><a href="${doc}">${doc}</a></td>`;
+        if (img) ht += `<td class='top'><a href="${doc}"><img width='100px' src="${img}"></a></td>`;
+        if (txt) ht += `<td class='text'><object data="${txt}"></object></td>`;
+        ht += '</tr>';
+      }
+
+      function AddToList(item) {
+        var s = item.split('.');
+        var name = s[0];
+        var ext = s[1];
+        if (name==current) { // more files about the same thing
+          if (ext=='png') img = item;
+          else if (ext=='txt' || ext=='rtf') txt = item;
+          else if (doc==null || ext=='pdf' || ext==null) doc = item;
+        }
+        else { // next file - emit the previous one
+          if (doc) output();
+          doc = null;
+          img = null;
+          txt = null;
+          if (ext=='png') img = item;
+          else if (ext=='txt' || ext=='rtf') txt = item;
+          else if (ext=='docx' || ext=='pdf' || ext==null) doc = item;
+          current = name;
+        }
+      }
+
+      function endList() {
+        // output the current file
+        if (doc) output();
+        ht += '</table>';
+      }
+
       (async () => {
         var path=window.location.pathname.split('/');
         var n = path.length-1;
@@ -25,12 +74,12 @@
         for (let file of contents) {
           if (file.name==dir) {
             var trees =  await getTrees(OWNER,REPO,file.sha);
-            var ht = '<ul>';
+            beginList();
             for (let file of trees.tree) {
               if (file.path == 'index.html') continue;
-              ht += `<li><a href="${file.path}">${file.path}</a></li>`;
+              AddToList(file.path);
             }
-            ht += '</ul>';
+            endList() ;
             document.getElementsByTagName('body')[0].innerHTML = ht;
             break;
           }
