@@ -1,4 +1,3 @@
 Display emoji on the micro:bit using the buttons.
-
-* Works with Scratch
-* Needs Scratch Link installation
+* Uses micro:bit buttons
+* Requires Scratch Link

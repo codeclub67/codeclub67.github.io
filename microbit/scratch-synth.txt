@@ -1,0 +1,3 @@
+Create a music synthesiser with the micro:bit.
+* Uses micro:bit tilt
+* Requires Scratch Link
