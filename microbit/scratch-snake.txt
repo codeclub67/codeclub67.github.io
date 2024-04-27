@@ -1,0 +1,4 @@
+The classic ‘Snake’ game using the micro:bit 
+tilt sensor. The snake cannot cross itself, but it grows longer when it eats!
+* micro:bit tilt events
+* requires Scratch Link
