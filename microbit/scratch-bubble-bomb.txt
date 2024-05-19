@@ -1,0 +1,4 @@
+Make a bubble-wrap time-bomb. When the micro:bit is thrown from one person to another the timer counts down. Who will catch it when it ‘explodes’?
+* micro:bit jump sensor
+* choosing sounds
+* micro:bit unplugged from the PC
