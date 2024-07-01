@@ -1,0 +1,3 @@
+The micro:bit has a built in compass – which way is North?
+
+* Compass
