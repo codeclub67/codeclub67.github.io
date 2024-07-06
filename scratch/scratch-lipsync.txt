@@ -1,0 +1,3 @@
+Make a character’s lips move in time to your voice.
+* timer
+* letter .. of
