@@ -1,0 +1,6 @@
+Make up a simple 3 or 4 line story, or use a nursery rhyme like “Humpty Dumpty.”
+* The stage drives the story, broadcasting a message for each line
+* Position and move your characters
+* Add speech bubbles
+* Show and hide characters when they appear or disappear in your story
+* Animate sprites by changing costumes quickly.
