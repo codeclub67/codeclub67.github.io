@@ -1,4 +1,4 @@
-Created animated backgrounds.
+Create animated backgrounds.
 
 * Stage
 * Backdrops
