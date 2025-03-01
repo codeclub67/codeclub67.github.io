@@ -71,6 +71,7 @@ function palette(c) {
 
 function imgOnLoad(e) {
   table = document.getElementById("table");
+  table.innerHTML = "";
   canvas.width = e.naturalWidth;
   canvas.height = e.naturalHeight;
   var context = canvas.getContext('2d');
