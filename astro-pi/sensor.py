@@ -58,9 +58,8 @@ sense.color.gain = 60 # Set the sensitivity of the sensor
 sense.color.integration_cycles = 64 # The interval at which the reading will be taken
 
 for i in range(28):
-    rgb = sense.color # get the colour from the sensor
-    degrees = sense.temperature
-    shift = degrees/120
+    sensor = sense.temperature
+    shift = sensor/120
     
     # Add colour variables and image
     # Colour palette
@@ -90,18 +89,19 @@ for i in range(28):
     z = colour_shift((153, 50, 204), shift) # DarkOrchid
     
     image = [
-q,	g,	q,	g,	q,	g,	q,	g,
-g,	q,	g,	l,	l,	l,	g,	q,
-q,	g,	l,	c,	l,	c,	l,	g,
-g,	q,	l,	c,	l,	c,	l,	q,
-q,	g,	q,	l,	l,	l,	q,	g,
-g,	q,	g,	q,	l,	q,	g,	q,
-q,	g,	l,	l,	l,	l,	l,	g,
-g,	q,	g,	q,	l,	q,	g,	q
+a,	q,	q,	q,	q,	q,	q,	a,
+q,	q,	q,	q,	q,	q,	q,	q,
+q,	q,	c,	q,	q,	c,	q,	q,
+q,	q,	q,	q,	q,	q,	q,	q,
+q,	q,	q,	q,	q,	q,	q,	q,
+q,	c,	q,	q,	q,	q,	c,	q,
+q,	q,	c,	c,	c,	c,	q,	q,
+a,	q,	q,	q,	q,	q,	q,	a
 ]
 
     # Display the image
     sense.set_pixels(image)
     sleep(1)
-
-sense.clear()
+    
+rgb = sense.color # get the colour from the sensor
+sense.clear((rgb.red, rgb.green, rgb.blue))
