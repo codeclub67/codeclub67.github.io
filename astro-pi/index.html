@@ -26,12 +26,13 @@ input.onchange = async (ev) => {
 };
 
 function getPixelStr(x, y, imgData) {
-  var pos = (y * imgData.width + x) * 4;
-  var data = imgData.data;
-  var r = data[pos];
-  var g = data[pos + 1];
-  var b = data[pos + 2];
-  var a = data[pos + 3];
+  //var pos = (y * imgData.width + x) * 4;
+  var pos = (y * 8 + x) * 4;
+  //var data = imgData[pos];
+  var b = imgData[pos];
+  var g = imgData[pos + 1];
+  var r = imgData[pos + 2];
+  var a = imgData[pos + 3];
   return hex(r)+hex(g)+hex(b);
 }
 
@@ -79,17 +80,21 @@ function imgOnLoad(e) {
   canvas.width = e.naturalWidth;
   canvas.height = e.naturalHeight;
   var context = canvas.getContext('2d');
-  createImageBitmap(e,0,0,8,8, { colorSpaceConversion: "none", premultiplyAlpha: "none" }).then(bitmap => {
+  createImageBitmap(e,0,0,8,8, { colorSpaceConversion: "none", premultiplyAlpha: "none" }).then(async bitmap => {
     context.drawImage(bitmap, 0, 0);
+    var frame = new VideoFrame(bitmap, {timestamp: 0, format:"RGBA" });
+    let buffer = new Uint8Array(frame.allocationSize());
+    let layout = await frame.copyTo(buffer, { rect: { x:0, y:0, width:8, height:8 } });  
+
     var imgData = context.getImageData(0, 0, canvas.width, canvas.height);
     for (var y=0; y<imgData.height; y++) {
       tr = document.createElement("tr");
       table.appendChild(tr);
       for (var x=0; x< imgData.width; x++) {
         td = document.createElement("td");
-        td.innerHTML = palette(getPixelStr(x,y,imgData))+((x==imgData.width-1 && y==imgData.height-1)?"":",");
+        td.innerHTML = palette(getPixelStr(x,y,buffer))+((x==imgData.width-1 && y==imgData.height-1)?"":",");
         tr.appendChild(td);
-        console.log(palette(getPixelStr(x,y,imgData))); // RGB mode = 3
+        //console.log(palette(getPixelStr(x,y,imgData))); // RGB mode = 3
       }
       console.log("");
     }
