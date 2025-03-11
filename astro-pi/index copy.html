@@ -69,31 +69,25 @@ function palette(c) {
   }
 }
 
-function draw() {
-
-}
-
 function imgOnLoad(e) {
   table = document.getElementById("table");
   table.innerHTML = "";
   canvas.width = e.naturalWidth;
   canvas.height = e.naturalHeight;
   var context = canvas.getContext('2d');
-  createImageBitmap(e,0,0,8,8, { colorSpaceConversion: "none" }).then(bitmap => {
-    context.drawImage(bitmap, 0, 0);
-    var imgData = context.getImageData(0, 0, canvas.width, canvas.height);
-    for (var y=0; y<imgData.height; y++) {
-      tr = document.createElement("tr");
-      table.appendChild(tr);
-      for (var x=0; x< imgData.width; x++) {
-        td = document.createElement("td");
-        td.innerHTML = palette(getPixelStr(x,y,imgData))+((x==imgData.width-1 && y==imgData.height-1)?"":",");
-        tr.appendChild(td);
-        console.log(palette(getPixelStr(x,y,imgData))); // RGB mode = 3
-      }
-      console.log("");
+  context.drawImage(e, 0, 0);
+  var imgData = context.getImageData(0, 0, canvas.width, canvas.height);
+  for (var y=0; y<imgData.height; y++) {
+    tr = document.createElement("tr");
+    table.appendChild(tr);
+    for (var x=0; x< imgData.width; x++) {
+      td = document.createElement("td");
+      td.innerHTML = palette(getPixelStr(x,y,imgData))+((x==imgData.width-1 && y==imgData.height-1)?"":",");
+      tr.appendChild(td);
+      console.log(palette(getPixelStr(x,y,imgData))); // RGB mode = 3
     }
-  });
+    console.log("");
+  }
 }
 </script>
 </body>
