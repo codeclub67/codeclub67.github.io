@@ -76,6 +76,7 @@ function imgOnLoad(e) {
   table.innerHTML = "";
   createImageBitmap(e,0,0,8,8, { colorSpaceConversion: "none", premultiplyAlpha: "none" }).then(async bitmap => {
     var frame = new VideoFrame(bitmap, {timestamp: 0 });
+    console.log(frame.colorSpace);
     let buffer = new Uint8Array(frame.allocationSize());
     let layout = await frame.copyTo(buffer, { rect: { x:0, y:0, width:8, height:8 }, format: "RGBX", colorSpaceConversion: "none" });  
     for (var y=0; y<bitmap.height; y++) {

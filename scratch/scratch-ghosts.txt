@@ -1,0 +1,1 @@
+Ghosts: Use the ghost effect.
