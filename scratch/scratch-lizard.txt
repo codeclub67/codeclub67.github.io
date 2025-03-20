@@ -1,3 +1,2 @@
-Lizard Tiles: Stamp interlocking sprites on the screen, like tiling a wall, using nested loops
-* Pen extension
-* Nested loops
+Lizard Tiles: Tile interlocking sprites, then make a mosaic.
+* Mosaic effect
