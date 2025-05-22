@@ -1,8 +1,8 @@
 { 
-  "a key":"entrance",
-  "a power gem":"entrance",
-  "lava":"entrance",
+  "a key":null,
+  "a power gem":null,
+  "lava":"lava-bridge",
   "a lava bridge": null,
-  "hungry": true,
+  "hungry": false,
   "popcorn": "cinema"
 }
