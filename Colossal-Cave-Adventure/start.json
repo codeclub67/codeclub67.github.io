@@ -1,8 +1,9 @@
 { 
-  "a key":null,
-  "a power gem":null,
-  "lava":"lava-bridge",
+  "a key":"entrance",
+  "a power gem":"Tung-Man-Room",
+  "lava":"entrance",
   "a lava bridge": null,
-  "hungry": false,
-  "popcorn": "cinema"
+  "dead": false,
+  "popcorn with something in it": "cinema",
+  "a rubber duck": "Duck Room"
 }
