@@ -1,3 +1,3 @@
-Move and rotate the track around a car (at the origin).
+Remember Scalextric? Move and rotate the track around a car (at the origin).
 * Sprite rotation around the screen origin.
 * Make blocks for new functions.
