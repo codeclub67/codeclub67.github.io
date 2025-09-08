@@ -6,6 +6,16 @@
     </style>
   </head>
   <body>
+    <section>
+      <b>Scratch Newbie? Start here:
+      <ol>
+        <li><a href="#scratch-first-steps">Scratch First Steps</a></li>
+      </ol>
+      </b>
+    </section>
+    <section id="content">
+
+    </section>
     <script>
       const OWNER = "codeclub67";
       const REPO = "codeclub67.github.io";
@@ -31,8 +41,8 @@
         ht = '<table>';
       }
 
-      function output() {
-        ht += `<tr><td class='text'><a href="${doc}">${doc}</a></td>`;
+      function output(id) {
+        ht += `<tr id="${id}"><td class='text'><a href="${doc}">${doc}</a></td>`;
         if (img) ht += `<td class='top'><a href="${doc}"><img width='100px' src="${img}"></a></td>`;
         if (txt) ht += `<td class='text'><object data="${txt}"></object></td>`;
         ht += '</tr>';
@@ -48,7 +58,7 @@
           else if (doc==null || ext=='pdf' || ext==null) doc = item;
         }
         else { // next file - emit the previous one
-          if (doc) output();
+          if (doc) output(name);
           doc = null;
           img = null;
           txt = null;
@@ -80,7 +90,8 @@
               AddToList(file.path);
             }
             endList() ;
-            document.getElementsByTagName('body')[0].innerHTML = ht;
+            //document.getElementsByTagName('body')[0].innerHTML = ht;
+            document.getElementById('content').innerHTML = ht;
             break;
           }
         }
