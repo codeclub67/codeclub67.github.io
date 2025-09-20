@@ -1,0 +1,2 @@
+One-Armed Bandit: Animated fruit
+* Adding costumes to a sprite

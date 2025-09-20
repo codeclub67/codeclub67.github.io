@@ -1,0 +1,2 @@
+Bat-n-Ball: Animated player with a bat and ball.
+* Animated sprites
