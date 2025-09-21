@@ -1,2 +1,5 @@
 One-Armed Bandit: Animated fruit
 * Adding costumes to a sprite
+* Synchronisation with broadcast and receive
+* Double-clicking to select sprite
+
