@@ -1,0 +1,96 @@
+<html>
+<body>
+<input id="upload" type="file" accept="image/png"><br>
+<img src="" id="preview" onload="imgOnLoad(this)"><br>
+image = [
+<table>
+  <tbody id="table">
+  </tbody>
+</table>]
+<script>
+const input = document.getElementById("upload");
+
+input.onchange = async (ev) => {
+  var reader;
+
+  if (input.files && input.files[0]) {
+    reader = new FileReader();
+
+    reader.onload = function(e) {
+      preview.setAttribute('src', e.target.result);
+    }
+
+    reader.readAsDataURL(input.files[0]);
+}
+};
+
+function getPixelStr(x, y, imgData) {
+  var pos = (y * 8 + x) * 4;
+  var b = imgData[pos];
+  var g = imgData[pos + 1];
+  var r = imgData[pos + 2];
+  var a = imgData[pos + 3];
+  return hex(r)+hex(g)+hex(b);
+}
+
+function hex(d) {
+  h = d.toString(16);
+  return d<16 ? "0"+h : h;
+}
+
+function palette(c) {
+  switch(c) {
+    case "ffffff": return "a";
+    case "696969": return "b";
+    case "000000": return "c";
+    case "6495ed": return "d";
+    case "0000cd": return "e";
+    case "191970": return "f";
+    case "00bfff": return "g";
+    case "00ffff": return "h";
+    case "8fbc8f": return "j";
+    case "2e8b57": return "k";
+    case "00ff7f": return "l";
+    case "228b57": return "m";
+    case "9acd32": return "n";
+    case "808000": return "o";
+    case "f0e68c": return "p";
+    case "ffff00": return "q";
+    case "b8860b": return "r";
+    case "8b4513": return "s";
+    case "ff8c00": return "t";
+    case "b22222": return "u";
+    case "ff0000": return "v";
+    case "ffc0cb": return "w";
+    case "ff1493": return "y";
+    case "9932cc": return "z";
+  }
+}
+
+function draw() {
+
+}
+
+function imgOnLoad(e) {
+  table = document.getElementById("table");
+  table.innerHTML = "";
+  createImageBitmap(e,0,0,8,8, { colorSpaceConversion: "none", premultiplyAlpha: "none" }).then(async bitmap => {
+    var frame = new VideoFrame(bitmap, {timestamp: 0 });
+    console.log(frame.colorSpace);
+    let buffer = new Uint8Array(frame.allocationSize());
+    let layout = await frame.copyTo(buffer, { rect: { x:0, y:0, width:8, height:8 }, format: "RGBX", colorSpaceConversion: "none" });  
+    for (var y=0; y<bitmap.height; y++) {
+      tr = document.createElement("tr");
+      table.appendChild(tr);
+      for (var x=0; x<bitmap.width; x++) {
+        td = document.createElement("td");
+        td.innerHTML = palette(getPixelStr(x,y,buffer))+((x==(bitmap.width-1) && y==(bitmap.height-1))?"":",");
+        tr.appendChild(td);
+      }
+      console.log("");
+    }
+  });
+}
+</script>
+</body>
+</html>
