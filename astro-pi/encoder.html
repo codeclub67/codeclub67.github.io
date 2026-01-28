@@ -1,0 +1,70 @@
+<html>
+<!-- see https://stackoverflow.com/questions/71345053/get-pixel-data-of-a-png-without-drawing-it-on-a-canvas -->
+<body>
+<input id="upload" type="file" accept="image/png"><br>
+image = [
+<table>
+  <tbody id="table">
+  </tbody>
+</table>]
+<!-- source: https://github.com/photopea/UPNG.js -->
+<script src="lib/UPNG.js"></script>
+<script>
+var data;
+const input = document.getElementById("upload");
+input.onchange = async (ev) => {
+  if (input.files && input.files[0]) {
+    file = input.files[0];
+    image = UPNG.decode(await file.arrayBuffer());
+    console.log(image);
+
+    table = document.getElementById("table");
+    table.innerHTML = "";
+
+    for (var y=0; y<image.height; y++) {
+      tr = document.createElement("tr");
+      table.appendChild(tr);
+      for (var x=0; x<image.width; x++) {
+        td = document.createElement("td");
+        n = y*image.width*4 + x*4;
+        r = image.data[n++] << 16;
+        g = image.data[n++] << 8;
+        b = image.data[n];
+        td.innerHTML = palette(r+g+b) + (x==image.width-1 && y==image.height-1 ?"":",")
+        tr.appendChild(td);
+      }
+    }
+  }
+};
+
+function palette(c) {
+  switch(c) {
+    case 0xffffff: return "a";
+    case 0x696969: return "b";
+    case 0x000000: return "c";
+    case 0x6495ed: return "d";
+    case 0x0000cd: return "e";
+    case 0x191970: return "f";
+    case 0x00bfff: return "g";
+    case 0x00ffff: return "h";
+    case 0x8fbc8f: return "j";
+    case 0x2e8b57: return "k";
+    case 0x00ff7f: return "l";
+    case 0x228b57: return "m";
+    case 0x9acd32: return "n";
+    case 0x808000: return "o";
+    case 0xf0e68c: return "p";
+    case 0xffff00: return "q";
+    case 0xb8860b: return "r";
+    case 0x8b4513: return "s";
+    case 0xff8c00: return "t";
+    case 0xb22222: return "u";
+    case 0xff0000: return "v";
+    case 0xffc0cb: return "w";
+    case 0xff1493: return "y";
+    case 0x9932cc: return "z";
+  }
+}
+</script>
+</body>
+</html>
