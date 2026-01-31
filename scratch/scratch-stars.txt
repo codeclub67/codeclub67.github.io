@@ -1,3 +1,3 @@
 Seeing Stars: Create your own code blocks to draw stars, or polygrams including pentagrams, hexagrams, and octograms.
-* Pen extension for drawing logo-like graphics.
-* The number of sides and the density (the multiple of 360) must be coprime (having no common factors other than 1).
+* Pen extension
+* The number of sides and the density (the multiple of 360) must be coprime (with no common factors other than 1).
