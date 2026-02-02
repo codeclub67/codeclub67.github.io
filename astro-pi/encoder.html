@@ -17,6 +17,7 @@ input.onchange = async (ev) => {
     file = input.files[0];
     image = UPNG.decode(await file.arrayBuffer());
     quant = UPNG.quantize(image.data,24);
+    
     console.log(quant.inds);
 
     table = document.getElementById("table");
