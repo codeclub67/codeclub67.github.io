@@ -16,8 +16,7 @@ input.onchange = async (ev) => {
   if (input.files && input.files[0]) {
     file = input.files[0];
     image = UPNG.decode(await file.arrayBuffer());
-    quant = UPNG.quantize(image.data,24);
-    console.log(quant.inds);
+    console.log(image);
 
     table = document.getElementById("table");
     table.innerHTML = "";
@@ -39,7 +38,6 @@ input.onchange = async (ev) => {
 };
 
 function palette(c) {
-  
   switch(c) {
     case 0xffffff: return "a";
     case 0x696969: return "b";
