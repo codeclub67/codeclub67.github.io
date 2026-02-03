@@ -53,7 +53,7 @@ function encode(rgb) {
     rdiff = Math.abs(red(rgb) - red(pal[n]));
     gdiff = Math.abs(green(rgb) - green(pal[n]));
     bdiff = Math.abs(blue(rgb) - blue(pal[n]));
-    diff = math.sqrt(rdiff + gdiff + bdiff);
+    diff = Math.sqrt(rdiff + gdiff + bdiff);
     if (diff<best) {
       best = diff;
       i = n;
