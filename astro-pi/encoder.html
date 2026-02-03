@@ -10,6 +10,9 @@ image = [
 <!-- source: https://github.com/photopea/UPNG.js -->
 <script src="lib/UPNG.js"></script>
 <script>
+
+const pal = [0xffffff, 0x696969, 0x000000, 0x6495ed, 0x0000cd, 0x191970, 0x00bfff, 0x00ffff, 0x8fbc8f, 0x2e8b57, 0x00ff7f, 0x228b57, 0x9acd32, 0x808000, 0xf0e68c, 0xffff00, 0xb8860b, 0x8b4513, 0xff8c00, 0xb22222, 0xff0000, 0xffc0cb, 0xff1493, 0x9932cc ];
+const code = ["a","b","c","d","e","f","g","h","j","k","l","m","n","o","p","q","r","s","t","u","v","w","y","z"];
 var data;
 const input = document.getElementById("upload");
 input.onchange = async (ev) => {
@@ -32,15 +35,34 @@ input.onchange = async (ev) => {
         r = image.data[n++] << 16;
         g = image.data[n++] << 8;
         b = image.data[n];
-        td.innerHTML = palette(r+g+b) + (x==image.width-1 && y==image.height-1 ?"":",")
+        td.innerHTML = encode(r+g+b) + (x==image.width-1 && y==image.height-1 ?"":",")
         tr.appendChild(td);
       }
     }
   }
 };
 
+function red(rgb) { return (rgb & 0xff0000)>>16; }
+function green(rgb) { return (rgb & 0x00ff00)>>8; }
+function blue(rgb) { return (rgb & 0x0000ff); }
+
+function encode(rgb) {
+  var i=0;
+  var best=0xffffff;
+  for (var n=0; n<24; n++) {
+    rdiff = Math.abs(red(rgb) - red(pal[n]));
+    gdiff = Math.abs(green(rgb) - green(pal[n]));
+    bdiff = Math.abs(blue(rgb) - blue(pal[n]));
+    diff = rdiff + gdiff + bdiff;
+    if (diff<best) {
+      best = diff;
+      i = n;
+    }
+  }
+  return code[i];
+}
+
 function palette(c) {
-  
   switch(c) {
     case 0xffffff: return "a";
     case 0x696969: return "b";
