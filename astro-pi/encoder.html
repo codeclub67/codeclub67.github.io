@@ -19,9 +19,10 @@ input.onchange = async (ev) => {
   if (input.files && input.files[0]) {
     file = input.files[0];
     image = UPNG.decode(await file.arrayBuffer());
-    quant = UPNG.quantize(image.data,24);
-    
-    console.log(quant.inds);
+    //quant = UPNG.quantize(image.data,24);
+    //console.log(quant.inds);
+    rgba8 = UPNG.toRGBA8(image)[0]; // [0] for the first frame
+    pixel = new Uint8Array(rgba8);
 
     table = document.getElementById("table");
     table.innerHTML = "";
@@ -32,9 +33,9 @@ input.onchange = async (ev) => {
       for (var x=0; x<image.width; x++) {
         td = document.createElement("td");
         n = y*image.width*4 + x*4;
-        r = image.data[n++] << 16;
-        g = image.data[n++] << 8;
-        b = image.data[n];
+        r = pixel[n++] << 16;
+        g = pixel[n++] << 8;
+        b = pixel[n];
         td.innerHTML = encode(r+g+b) + (x==image.width-1 && y==image.height-1 ?"":",")
         tr.appendChild(td);
       }
