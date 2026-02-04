@@ -1,12 +1,18 @@
 <html>
 <!-- see https://stackoverflow.com/questions/71345053/get-pixel-data-of-a-png-without-drawing-it-on-a-canvas -->
 <body>
+<img src="ambient-letters.png" alt="astro-pi colour palette">
+<br>
 <input id="upload" type="file" accept="image/png"><br>
 image = [
 <table>
   <tbody id="table">
   </tbody>
 </table>]
+<br>
+<table id="render">
+</table>
+
 <!-- source: https://github.com/photopea/UPNG.js -->
 <script src="lib/UPNG.js"></script>
 <script>
@@ -33,13 +39,34 @@ input.onchange = async (ev) => {
       for (var x=0; x<image.width; x++) {
         td = document.createElement("td");
         n = y*image.width*4 + x*4;
-        r = pixel[n++] << 16;
-        g = pixel[n++] << 8;
-        b = pixel[n];
+        r = image.data[n++] << 16;
+        g = image.data[n++] << 8;
+        b = image.data[n];
         td.innerHTML = encode(r+g+b) + (x==image.width-1 && y==image.height-1 ?"":",")
         tr.appendChild(td);
       }
     }
+
+    render = document.getElementById("render");
+    render.innerHTML = "";
+
+    for (var y=0; y<image.height; y++) {
+      tr = document.createElement("tr");
+      render.appendChild(tr);
+      for (var x=0; x<image.width; x++) {
+        td = document.createElement("td");
+        n = y*image.width*4 + x*4;
+        r = pixel[n++] << 16;
+        g = pixel[n++] << 8;
+        b = pixel[n];
+        c = encode(r+g+b)
+        td.innerHTML = "&nbsp;"+ c +"&nbsp;";
+        console.log("#"+("00000"+pal[code.indexOf(c)].toString(16)).slice(-6));
+        td.style.backgroundColor = "#"+("00000"+pal[code.indexOf(c)].toString(16)).slice(-6);
+        tr.appendChild(td);
+      }
+    }
+
   }
 };
 
