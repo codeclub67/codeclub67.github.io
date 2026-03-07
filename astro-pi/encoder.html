@@ -4,12 +4,12 @@
 <img src="ambient-letters.png" alt="astro-pi colour palette">
 <br>
 <input id="upload" type="file" accept="image/png"><br>
-image = [
+<!-- image = [
 <table>
   <tbody id="table">
   </tbody>
 </table>]
-<br>
+<br-->
 <table id="render">
 </table>
 
@@ -30,22 +30,22 @@ input.onchange = async (ev) => {
     rgba8 = UPNG.toRGBA8(image)[0]; // [0] for the first frame
     pixel = new Uint8Array(rgba8);
 
-    table = document.getElementById("table");
-    table.innerHTML = "";
+    // table = document.getElementById("table");
+    // table.innerHTML = "";
 
-    for (var y=0; y<image.height; y++) {
-      tr = document.createElement("tr");
-      table.appendChild(tr);
-      for (var x=0; x<image.width; x++) {
-        td = document.createElement("td");
-        n = y*image.width*4 + x*4;
-        r = image.data[n++] << 16;
-        g = image.data[n++] << 8;
-        b = image.data[n];
-        td.innerHTML = encode(r+g+b) + (x==image.width-1 && y==image.height-1 ?"":",")
-        tr.appendChild(td);
-      }
-    }
+    // for (var y=0; y<image.height; y++) {
+    //   tr = document.createElement("tr");
+    //   table.appendChild(tr);
+    //   for (var x=0; x<image.width; x++) {
+    //     td = document.createElement("td");
+    //     n = y*image.width*4 + x*4;
+    //     r = image.data[n++] << 16;
+    //     g = image.data[n++] << 8;
+    //     b = image.data[n];
+    //     td.innerHTML = encode(r+g+b) + (x==image.width-1 && y==image.height-1 ?"":",")
+    //     tr.appendChild(td);
+    //   }
+    // }
 
     render = document.getElementById("render");
     render.innerHTML = "";
@@ -60,7 +60,7 @@ input.onchange = async (ev) => {
         g = pixel[n++] << 8;
         b = pixel[n];
         c = encode(r+g+b)
-        td.innerHTML = "&nbsp;"+ c +"&nbsp;";
+        td.innerHTML = "&nbsp;"+ c + (x==image.width-1 && y==image.height-1 ?"":",");
         console.log("#"+("00000"+pal[code.indexOf(c)].toString(16)).slice(-6));
         td.style.backgroundColor = "#"+("00000"+pal[code.indexOf(c)].toString(16)).slice(-6);
         tr.appendChild(td);

@@ -23,9 +23,7 @@ def rgb_to_hsb(rgb):
             b: (r - g) / d + 4,
         }[high]
         h /= 6
-
     return h,s,v/255
-
 
 def hsb_to_rgb(h, s, v):
     i = math.floor(h*6)
@@ -33,7 +31,6 @@ def hsb_to_rgb(h, s, v):
     p = v * (1-s)
     q = v * (1-f*s)
     t = v * (1-(1-f)*s)
-
     r, g, b = [
         (v, t, p),
         (q, v, p),
@@ -42,8 +39,9 @@ def hsb_to_rgb(h, s, v):
         (t, p, v),
         (v, p, q),
     ][int(i%6)]
-
     return round(r*255), round(g*255), round(b*255)
+
+# This implements the Scratch colour effect
 
 def colour_shift(rgb,n):
     hsb = rgb_to_hsb(rgb)
@@ -88,7 +86,7 @@ for i in range(28):
     y = colour_shift((255, 20, 147), shift) # DeepPink
     z = colour_shift((153, 50, 204), shift) # DarkOrchid
     
-    image = [
+    image1 = [
 a,	q,	q,	q,	q,	q,	q,	a,
 q,	q,	q,	q,	q,	q,	q,	q,
 q,	q,	c,	q,	q,	c,	q,	q,
@@ -99,8 +97,19 @@ q,	q,	c,	c,	c,	c,	q,	q,
 a,	q,	q,	q,	q,	q,	q,	a
 ]
 
+    image2 = [
+a,	q,	q,	q,	q,	q,	q,	a,
+q,	q,	q,	q,	q,	q,	q,	q,
+q,	q,	c,	q,	q,	c,	q,	q,
+q,	q,	q,	q,	q,	q,	q,	q,
+q,	q,	q,	q,	q,	q,	q,	q,
+q,	q,	q,	q,	q,	q,	q,	q,
+q,	q,	c,	c,	c,	c,	q,	q,
+a,	q,	q,	q,	q,	q,	q,	a
+]
+
     # Display the image
-    sense.set_pixels(image)
+    sense.set_pixels(image1 if i%2==0 else image2)
     sleep(1)
     
 rgb = sense.color # get the colour from the sensor
