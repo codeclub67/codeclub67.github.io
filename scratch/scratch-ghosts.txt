@@ -1,1 +1,2 @@
-Ghosts: Use the ghost effect.
+Ghosts: Spooky fun.
+* Uses the ghost effect
