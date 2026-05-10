@@ -1,0 +1,1 @@
+Guide a bump’n’turn BOLT robot around a maze, turning only when you bump into a wall. This is called an ice-slide maze. Do a clockwise loop around the maze, starting and finishing at the top-right corner.
