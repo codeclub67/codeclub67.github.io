@@ -1,0 +1,4 @@
+Play one-dimensional Pac-Man in Scratch.
+* timer
+* broadcast
+* animation
