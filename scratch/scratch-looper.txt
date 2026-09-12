@@ -1,0 +1,4 @@
+Make rhythms by looping.
+* Explore loops
+* nested loops
+* Music extension
