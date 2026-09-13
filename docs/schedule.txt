@@ -1,0 +1,62 @@
+2025-26
+
+14/09/25 Bat n’ Ball / Scratch move (beginners)
+20/09/25 Scratch Bandit / Scratch talk (beginners)
+29/09/25 Scratch angle
+06/10/25 Scratch eyes “googly eyes” / Scratch layers (advanced)
+13/10/25 Scratch aquarium
+18/10/25 Scratch ghosts (Halloween)
+
+03/11/25 Scratch racer
+07/12/25 boost booster
+
+09/01/26 Scratch face
+25/01/26 Scratch shapes
+31/01/26 Scratch stars
+05/02/26 Scratch dragon (Chinese new year)
+
+23/02/26 Astro-pi mission zero 1
+28/02/26 Astro-pi mission zero 2
+07/03/26 Astro-pi mission zero sensor / launch
+14/03/26 Scratch parrot “Flappy Parrot”
+19/03/26 Scratch “Whac-a-Mole”
+25/03/26 Scratch egg (Easter)
+
+24/04/26 Scratch lander
+17/05/26 Sphero run-robot-run
+29/05/26 Scratch lipsync
+24/06/26 Sphero Pac-Man badges
+06/07/26 Scratch Pac-Man 1D
+07/07/26 Makey Fruit Machine / Scratch sparkle
+
+2026-27
+
+12/10/26 Scratch looper / first steps
+
+https://www.create-learn.us/blog/scratch-projects-for-kids/
+
+breakout
+asteroids
+cutie
+doll
+driver
+extric
+maze
+mosaic
+orbital
+pizza
+rover
+scratchling
+scroll
+scroll 2
+shop
+snowflake
+sound "spooky sounds"
+squiral
+stamp
+story
+swerve
+tessellation
+tetris
+touch colour - platform game needs work
+video -drum kit
