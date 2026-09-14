@@ -60,3 +60,7 @@ tessellation
 tetris
 touch colour - platform game needs work
 video -drum kit
+
+AI
+HTML
+
