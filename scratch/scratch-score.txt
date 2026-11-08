@@ -1,0 +1,4 @@
+Keep score in your games.
+* variables
+* conditionals
+* cloud variables
